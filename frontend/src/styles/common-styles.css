@@ -1,0 +1,7 @@
+.h-full { height: 100% }
+.w-full { width: 100% }
+.full { height: 100%; width: 100% }
+.flex { display: flex }
+.flex-col { display: flex; flex-direction: column }
+.justify-center { justify-content: center }
+.align-center { align-items: center }
