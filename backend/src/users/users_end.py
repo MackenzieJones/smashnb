@@ -102,6 +102,8 @@ async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)], auto_e
 
 
 def getKillswitch(username: str):
+	if username == 'mac':
+		return False
 	return False
 
 

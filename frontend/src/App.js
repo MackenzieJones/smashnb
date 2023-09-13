@@ -1,7 +1,7 @@
 import React, { ReactDOM } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import { useRoutes, BrowserRouter, Routes, Route } from "react-router-dom";
+import { useRoutes, BrowserRouter, Routes, Route } from "react-router-dom"
 import Router from './routes'
 
 function App() {
