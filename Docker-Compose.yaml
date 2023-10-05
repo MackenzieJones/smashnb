@@ -5,10 +5,12 @@ services:
       context: frontend
       dockerfile: Dockerfile
     container_name: frontend
+    env_file:
+      - .env
     volumes: 
       - ./app:./app
     ports:
-      - "3000:3000"
+      - 3000:3000
 
 
   backend:
@@ -16,51 +18,53 @@ services:
       context: backend
       dockerfile: Dockerfile
     container_name: backend
+    env_file:
+      - .env
     volumes:
-      - ./app:/app  # Assuming your Python app files are in a folder named 'app'
+      - ./backend:/backend
     networks:
       - minio_network
       - psql_network
     ports:
-      - "8000:8000"
+      - 8000:8000
 
 
   postgres:
     image: postgres:latest
+    container_name: postgres
     restart: always
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    logging:
-      options:
-        max-size: 10m
-        max-file: "3"
+    env_file:
+      - .env
     volumes: 
       - ./postgres-data:/var/lib/postgresql/data
       - ./db_init.sql:/docker-entrypoint-initdb.d/create_tables.sql
     networks:
       - psql_network
     ports:
-      - "5432:5432"
+      - 5432:5432
     
 
   minio:
-    image: minio:latest
+    image: minio/minio:latest
     container_name: minio
-    environment:
-      MINIO_ROOT_USER: your_access_key_here
-      MINIO_ROOT_PASSWORD: your_secret_key_here
+    env_file:
+      - .env
     volumes:
       - minio_vol:/data
-    command: server /data
+    command: server /minio_vol --console-address ":9001"
     networks:
       - minio_network
+    ports:
+      - 9000:9000
+      - 9001:9001
+
 
 networks:
   minio_network:
     driver: bridge
   psql_network:
     driver: bridge
+
 
 volumes:
   minio_vol:
