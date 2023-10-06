@@ -5,7 +5,7 @@ import Landing from './landing/Landing'
 import Login from './auth/login'
  
 
-const Router = () =>{
+const Routes = () =>{
 	const routes = useRoutes([
 		{
 			path: '/',
@@ -24,4 +24,4 @@ const Router = () =>{
 	return routes
 }
 
-export default Router
+export default Routes

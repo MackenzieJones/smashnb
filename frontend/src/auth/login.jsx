@@ -1,9 +1,9 @@
 import { useNavigate, useLocation } from "react-router"
 import { useState } from "react"
 import useAuth from "./useAuth"
-import '../styles/common-styles.css'
+import 'src/styles/common-styles.css'
 import axios from 'ax'
-
+import env from 'src/env'
 
 
 const Login = () => {
