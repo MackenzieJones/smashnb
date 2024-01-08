@@ -1,32 +1,32 @@
 version: '3'
 services:
-  frontend:
-    build:
-      context: frontend
-      dockerfile: Dockerfile
-    container_name: frontend
-    env_file:
-      - .env
-    volumes: 
-      - ./app:./app
-    ports:
-      - 3000:3000
+#   frontend:
+#     build:
+#       context: frontend
+#       dockerfile: Dockerfile
+#     container_name: frontend
+#     env_file:
+#       - .env
+#     volumes: 
+#       - ./app:./app
+#     ports:
+#       - 3000:3000
 
 
-  backend:
-    build:
-      context: backend
-      dockerfile: Dockerfile
-    container_name: backend
-    env_file:
-      - .env
-    volumes:
-      - ./backend:/backend
-    networks:
-      - minio_network
-      - psql_network
-    ports:
-      - 8000:8000
+#   backend:
+#     build:
+#       context: backend
+#       dockerfile: Dockerfile
+#     container_name: backend
+#     env_file:
+#       - .env
+#     volumes:
+#       - ./backend:/backend
+#     networks:
+#       - minio_network
+#       - psql_network
+#     ports:
+#       - 8000:8000
 
 
   postgres:

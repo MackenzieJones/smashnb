@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from src.users import router as userRouter
+from src.routes import appRouter
 
 app = FastAPI()
 
-app.include_router(userRouter)
+app.include_router(appRouter)
 
 @app.get("/")
 async def root():
